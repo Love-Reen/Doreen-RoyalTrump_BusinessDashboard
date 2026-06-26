@@ -1,57 +1,77 @@
-# 📊 Royal Trump Enterprises: Business & Financial Dashboard
+# Royal Trump Enterprises — Sales Intelligence Dashboard
 
-A professional, interactive Excel business dashboard designed to automate financial tracking, monitor daily operations, and analyze sales performance for Royal Trump Enterprises. This project demonstrates practical expertise in data analytics, CRM management, and business intelligence.
+A Business Intelligence system built in Excel that turns daily cyber café sales transactions into a live, auto-updating dashboard — covering revenue tracking, service performance, and category analysis for a small business in Nairobi, Kenya.
 
-## 🛠️ Key Features & Capabilities
-
-- **Automated Financial Tracking:** Streamlined monitoring of operational revenue, managing a baseline of **KES 91,372** in total sales.
-- **Performance vs. Targets:** Dynamic tracking of daily break-even thresholds and operational revenue targets to ensure business sustainability.
-- **Credit & Account Receivable Management:** A built-in credit tracking feature designed to monitor outstanding customer balances, improve cash flow, and manage credit risk dynamically.
-- **Interactive Visualizations:** Clean, user-friendly charts designed for stakeholders to quickly identify sales trends, top-performing services, and operational bottlenecks.
-
-## 🗂️ Project Structure
-
-- `Doreen RoyalTrump_BusinessDashboard.xlsx`: The core interactive Excel workbook containing the raw data, calculations, and visual dashboard layout.
-- `README.md`: Project documentation, business context, and portfolio presentation.
+**Prepared by:** Doreen Wathimu
 
 ---
 
-## 🖥️ Dashboard Preview
+## Overview
 
-*(Tip: Open the file in Excel and navigate to the **📊 DASHBOARD** tab to view the live charts!)*
+Royal Trump Enterprises is a cyber café offering printing, photocopying, lamination, government document services (e-Citizen, DL renewal, passport applications), and related services. Daily sales were originally logged by hand into a spreadsheet with inconsistent naming, mixed-in expenses, and no way to see trends or top performers at a glance.
 
-![Dashboard Screenshot Placeholder]([Link to your screenshot or upload your image here])
-*Figure 1: Main Business Dashboard showing Sales Performance, Targets, and Credit Analysis.*
+This project rebuilds that raw log into a structured BI system with:
 
----
+- A clean, repeatable **data entry workflow**
+- A **lookup-based categorization engine** so every transaction is automatically classified
+- **Pivot tables** summarizing revenue by category, service, month, week, and day
+- A live **Dashboard** with KPI cards and four charts that update automatically as new sales are entered
+- A documented **data quality process** showing what was cleaned and why
 
-## 📈 Data Insights & KPI Breakdown
+## Business Objective
 
-### 1. Sales & Revenue Performance
-- **Total Tracked Sales:** KES 91,372
-- **Objective:** Consolidate fragmented daily transactions from various business services (cyber cafe operations, technical support, and administrative services) into a centralized, clean data model.
+> Design a Business Intelligence system that transforms daily sales transactions into meaningful insights for decision-making — enabling monitoring of revenue trends, identification of high-performing services, evaluation of category performance, and a foundation for future financial and credit management modules.
 
-### 2. Operational Efficiency & Break-Even Metrics
-- The workbook automatically computes daily financial health metrics against fixed overheads, highlighting whether the business met its operational break-even targets on any given day.
+## Dashboard Preview
 
-### 3. Credit Risk Management
-- Tracks client credit extensions seamlessly. This feature provides management with real-time visibility into outstanding receivables, ensuring proactive collection strategies.
+The Dashboard sheet includes:
 
----
+- **KPI row** — Total Revenue, Total Transactions, Average Sale Value, Highest Single Sale
+- **Revenue by Category** — pie chart showing each category's share of total revenue
+- **Revenue by Service** — top services ranked by income
+- **Monthly Revenue Trend** — line chart tracking revenue over time
+- **Sales by Day of Week** — bar chart identifying the busiest trading days
 
-## 🛠️ Tech Stack & Skills Demonstrated
+## Workbook Structure
 
-- **Advanced Excel:** Data modeling, nested logical functions (`IF`, `VLOOKUP`/`INDEX-MATCH`), conditional formatting, data validation dropdowns, and dynamic charting.
-- **Business Intelligence:** Dynamic KPI card design, trend analysis, and actionable business reporting.
-- **Data Architecture:** Transforming messy, daily administrative logs into structured relational tables ready for analytical reporting.
+| Sheet | Purpose |
+|---|---|
+| `README` | Project overview, objective, and scope (in-workbook version of this file) |
+| `DATA_INPUT` | Daily entry point — type Date, Service, and Amount; Category fills in automatically |
+| `RAW_DATA` | Full historical transaction log, cleaned and structured for analysis |
+| `LOOKUPS` | Service-to-category mapping table used to auto-classify every transaction |
+| `PIVOT_TABLES` | Revenue summarized by Category, Service, Month, Week, and Day |
+| `DASHBOARD` | The live visual summary — KPIs and charts, built on top of the pivot tables |
+| `DATA_QUALITY` | Documents the cleaning steps applied to the original raw data |
+| `EDA` | Exploratory summary metrics (revenue, transaction count, averages) |
+| `SETTINGS` | Workbook configuration (reserved for future automation) |
 
----
+## How It Works
 
-## 🚀 How to View the Project
+1. **Enter a transaction** in `DATA_INPUT` — Date, Service, Amount.
+2. A `VLOOKUP` against the `LOOKUPS` table automatically assigns a Category.
+3. The entry flows into `RAW_DATA` via formula, joining the historical dataset.
+4. `PIVOT_TABLES` recalculates totals by category, service, and time period.
+5. `DASHBOARD` reflects the updated figures immediately — no manual refresh of formulas required.
 
-1. **Download the Workbook:** Click on `Doreen RoyalTrump_BusinessDashboard.xlsx` above and select **Download** (or click the "View Raw" link).
-2. **Enable Macros/Content:** Open the file in Microsoft Excel. Ensure content is enabled to preserve any advanced interactive layout elements and formatting.
-3. **Explore Tabs:** Navigate through the data sheets to see the backend logic, and use the dashboard tab for high-level business summaries.
+## Data Quality Notes
 
----
-*Developed as part of a professional data analytics and Digital Customer Service (DCS) operations optimization portfolio.*
+The original raw export contained 670 rows, including 70 entirely blank separator rows that were identified and removed. Entries that weren't genuine sales — rent payments, owner cash withdrawals, and a small number of personal/non-business expenses — were re-tagged into dedicated categories (`Rent / Fixed Expense`, `Owner Withdrawal`, `Personal / Non-Business`) so they no longer distort revenue and "top service" metrics. This process and its findings are logged in the `DATA_QUALITY` sheet.
+
+## Current Status
+
+**Module 1 — Sales Intelligence Dashboard:** in progress. Core data pipeline (input → categorization → pivot tables → dashboard) is functional; visual styling and a few category edge cases are still being refined.
+
+## Roadmap
+
+- [ ] Finish dashboard visual styling (color theme, card layout)
+- [ ] Resolve remaining "Other Services" catch-all entries for cleaner category reporting
+- **Financial Dashboard** — expenses, profit margins, budget tracking
+- **Credit Management Dashboard** — customer credit/debt tracking
+- **Automation & Reporting** — scheduled summaries, reduced manual upkeep
+
+## Tools
+
+- Microsoft Excel (formulas, PivotTables, PivotCharts)
+- `VLOOKUP`, `SUMIFS`/`COUNTIFS`, array formulas
+- Manual data cleaning and validation
